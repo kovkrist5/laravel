@@ -45,7 +45,8 @@ class CategoriesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category= Category::find($id);
+        return view('categories.show', compact('category'));
     }
 
     /**
@@ -53,15 +54,26 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category= Category::find($id);
+        return view('categories.edit', compact('category'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(
+            ['name'=>'required|min:3|max:255',],
+            ['name.min' => 'Category name must be 3 characters minimum']
+        );
+
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category-> save();
+
+        return redirect()->route('categories.index')->with('success', 'category edited successfully');
     }
 
     /**
@@ -69,6 +81,9 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category= Category::find($id);
+        $category-> delete();
+
+        return redirect()->route('categories.index')->with('success', 'category deleted successfully');
     }
 }

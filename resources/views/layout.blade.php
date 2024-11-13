@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="{{asset('style.css')}}">
 </head>
 <body>
-    <header></header>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{route('categories.index')}}">categories</a></li>
+                <li><a href="{{route('categories.create')}}">new category</a></li>
+                
+            </ul>
+        </nav>
+    </header>
     <main>
         @yield('content')
     </main>
