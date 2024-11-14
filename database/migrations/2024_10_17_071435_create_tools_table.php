@@ -16,9 +16,9 @@ return new class extends Migration
             $table -> unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table ->string('name');
-            $table ->string('description');
+            $table ->string('desc');
             $table ->text('link');
-            $table ->boolean('hasFeePlan') ->default(false);
+            $table ->boolean('plan') ->default(false);
             $table->decimal('price', 5,2)->nullable();
             $table->timestamps();
         });

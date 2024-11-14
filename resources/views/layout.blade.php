@@ -12,6 +12,7 @@
             <ul>
                 <li><a href="{{route('categories.index')}}">categories</a></li>
                 <li><a href="{{route('categories.create')}}">new category</a></li>
+                <li><a href="{{route('tools.index')}}">Tools</a></li>
                 
             </ul>
         </nav>
