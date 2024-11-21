@@ -42,8 +42,8 @@
         </fieldset>
 
         <fieldset>
-            <label for="plan">are you stupid enough to pay for ai?</label>
-            <input type="checkbox" name="plan" id="plan">
+            <label for="hasFreePlan">do ypu wanna destroy the climate for FREE?</label>
+            <input type="checkbox" name="hasFreePlan" id="hasFreePlan">
         </fieldset>    
 
         <fieldset>

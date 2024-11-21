@@ -39,10 +39,10 @@ class ToolsController extends Controller
 
         $request->validate([
             'name' => 'required|string|min:3',
-            'category_id' => 'exists:categories.id',
+            'category_id' => 'exists:categories,id',
             'desc' => 'string',
             'link' => 'url',
-            'plan' => 'boolean',
+            'hasFreePlan' => 'boolean',
             'price' => 'nullable|numeric',
         ]);
 
@@ -56,7 +56,8 @@ class ToolsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tools= Tools::find($id);
+        return view('tools.show', compact('tools'));
     }
 
     /**
@@ -64,7 +65,8 @@ class ToolsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $tools= Tools::find($id);
+        return view('tools.edit', compact('tools'));
     }
 
     /**
@@ -72,7 +74,16 @@ class ToolsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(
+            ['name'=>'required|min:3|max:255',],
+            ['name.min' => 'Tool name must be 3 characters minimum']
+        );
+
+        $tools = Tools::find($id);
+        $tools->name = $request->name;
+        $tools-> save();
+
+        return redirect()->route('tools.index')->with('success', 'tool edited successfully');
     }
 
     /**
@@ -80,6 +91,9 @@ class ToolsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tools= Tools::find($id);
+        $tools-> delete();
+
+        return redirect()->route('tools.index')->with('success', 'tool deleted successfully');
     }
 }

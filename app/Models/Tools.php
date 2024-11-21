@@ -16,7 +16,7 @@ class Tools extends Model
         'category_id',
         'desc',
         'link',
-        'plan',
+        'hasFreePlan',
         'price',
     ];
     public function category(){

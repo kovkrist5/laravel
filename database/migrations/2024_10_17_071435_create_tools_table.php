@@ -19,7 +19,7 @@ return new class extends Migration
             $table ->string('desc');
             $table ->text('link');
             $table ->boolean('plan') ->default(false);
-            $table->decimal('price', 5,2)->nullable();
+            $table->decimal('price', 8,2)->nullable();
             $table->timestamps();
         });
     }
